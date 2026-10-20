@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en" data-idioma="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enriqueta Gersol · Portfolio</title>
+<meta name="description" content="Enriqueta Gersol, Telecommunications Engineer based in Madrid. I design and build products with AI, cloud and APIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --fondo: #000000; --superficie: #0f0f0f; --superficie2: #181818; --texto: #ffffff; --suave: #a1a1a1; --borde: #262626;
+  --acento: #ffffff; --acento2: #ffffff; --acento-suave: #1c1c1c; --sobre-acento: #000000; --sombra: none;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 76px; }
+body { margin: 0; overflow-x: hidden; background: var(--fondo); color: var(--texto); font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+html[data-idioma="es"] [lang="en"], html[data-idioma="en"] [lang="es"] { display: none !important; }
+a { color: var(--acento); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+.envoltorio { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* barra */
+.barra { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--fondo) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--borde); }
+.barra .envoltorio { display: flex; align-items: center; gap: 22px; height: 60px; }
+.marca { font-weight: 800; letter-spacing: -.3px; color: var(--texto); }
+.barra nav { display: flex; gap: 20px; margin-left: auto; font-size: 14.5px; }
+.barra nav a { color: var(--suave); }
+.idiomas { display: flex; border: 1px solid var(--borde); border-radius: 999px; overflow: hidden; }
+.idiomas button { border: 0; background: none; color: var(--suave); font: 600 13px Inter, sans-serif; padding: 5px 11px; cursor: pointer; }
+.idiomas button[aria-pressed="true"] { background: var(--acento); color: var(--sobre-acento); }
+
+/* portada */
+.portada { padding-top: 88px; padding-bottom: 64px; }
+.portada .etiqueta { display: inline-flex; gap: 8px; align-items: center; font-size: 13.5px; font-weight: 600; color: var(--acento); background: var(--acento-suave); padding: 5px 12px; border-radius: 999px; }
+.portada h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: -1.6px; margin: 18px 0 14px; font-weight: 800; }
+.subtitulo-portada { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.35; font-weight: 600; letter-spacing: -.3px; margin: 0 0 18px; max-width: 620px; }
+.portada p.lema { font-size: clamp(17px, 2.2vw, 21px); color: var(--suave); max-width: 720px; margin: 0 0 28px; }
+.botones { display: flex; gap: 10px; flex-wrap: wrap; }
+.boton { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 11px; font-weight: 600; font-size: 15px; border: 1px solid var(--borde); background: var(--superficie); color: var(--texto); }
+.boton:hover { text-decoration: none; border-color: var(--suave); }
+.boton.primario:hover { background: #d4d4d4; border-color: #d4d4d4; }
+.boton.primario { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); }
+.portada-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
+.portada .portada-grid h1 { font-size: clamp(34px, 4.4vw, 52px); }
+.portada p.lema b { color: var(--texto); font-weight: 600; }
+.portada-captura { margin: 0; }
+.portada-captura .marco { display: block; transition: transform .15s, box-shadow .15s; }
+.portada-captura .marco:hover { transform: translateY(-2px); border-color: #555; }
+.portada-captura figcaption { margin-top: 10px; font-size: 14px; font-weight: 600; }
+.skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 56px; }
+.skill { display: block; background: var(--superficie); border: 1px solid var(--borde); border-radius: 16px; padding: 18px; color: inherit; transition: border-color .15s, transform .15s; }
+.skill:hover { text-decoration: none; border-color: var(--acento); transform: translateY(-2px); }
+.skill b { display: block; font-size: 16px; margin-bottom: 4px; }
+.skill p { margin: 0 0 10px; color: var(--suave); font-size: 14px; }
+.skill .prueba { font-size: 13px; font-weight: 600; color: var(--acento); }
+.aviso { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: var(--texto); color: var(--fondo); font-size: 14px; font-weight: 600; padding: 10px 16px; border-radius: 10px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 60; }
+.aviso.visible { opacity: 1; transform: translate(-50%, 0); }
+
+/* secciones */
+section { padding: 56px 0; }
+.titulo-seccion { font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; color: var(--acento); margin: 0 0 8px; }
+h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.8px; line-height: 1.15; margin: 0 0 14px; }
+h3 { font-size: 21px; letter-spacing: -.3px; margin: 0 0 8px; }
+.intro { color: var(--suave); font-size: 17.5px; max-width: 760px; margin: 0 0 30px; }
+
+/* proyecto destacado */
+.destacado { background: var(--superficie); border: 1px solid var(--borde); border-radius: 24px; box-shadow: var(--sombra); padding: 34px; }
+.cabecera-destacado { display: flex; gap: 18px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0 0; padding: 0; list-style: none; }
+.chips li { font-size: 13px; font-weight: 500; background: var(--superficie2); border: 1px solid var(--borde); padding: 3px 10px; border-radius: 999px; color: var(--suave); }
+.marco { border-radius: 14px; overflow: hidden; border: 1px solid var(--borde); background: var(--superficie2); box-shadow: var(--sombra); cursor: zoom-in; }
+.marco .puntos { height: 26px; display: flex; gap: 6px; align-items: center; padding: 0 12px; border-bottom: 1px solid var(--borde); }
+.marco .puntos i { width: 9px; height: 9px; border-radius: 50%; background: var(--borde); }
+.principal { margin: 28px 0 10px; }
+.nota-demo { font-size: 13px; color: var(--suave); margin: 0 0 28px; }
+.funciones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 6px 0 34px; }
+.funcion { border: 1px solid var(--borde); border-radius: 16px; padding: 18px; background: var(--fondo); }
+.funcion .icono { font-size: 22px; }
+.funcion b { display: block; margin: 8px 0 4px; font-size: 16px; }
+.funcion p { margin: 0; color: var(--suave); font-size: 14.5px; }
+.cifras-proyecto { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
+.cifras-proyecto li { background: var(--fondo); border: 1px solid var(--borde); border-radius: 14px; padding: 12px 14px; color: var(--suave); font-size: 13.5px; line-height: 1.35; }
+.cifras-proyecto b { display: block; font-size: 24px; letter-spacing: -.5px; color: var(--texto); }
+.contexto { margin: 22px 0 0; }
+.contexto .caja h3, .aprendi h3, .ficha + * h3 { margin-bottom: 6px; }
+.lista { margin: 0; padding-left: 18px; color: var(--suave); font-size: 15px; }
+.lista li { margin: 2px 0; }
+.subtitulo { margin: 8px 0 14px; }
+.funcion ul { margin: 0; padding-left: 16px; color: var(--suave); font-size: 14px; }
+.funcion li { margin: 4px 0; }
+.funciones .funcion:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+.ficha { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; font-size: 14.5px; }
+.ficha dt { font-weight: 600; }
+.ficha dd { margin: 0; color: var(--suave); }
+.aprendi { margin-top: 16px; }
+.galeria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 34px; }
+.galeria figure { margin: 0; }
+.galeria figcaption { font-size: 14px; color: var(--suave); margin-top: 8px; }
+.dos-columnas { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; }
+.decisiones { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.decisiones li { display: flex; gap: 12px; }
+.decisiones li span.n { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--acento-suave); color: var(--acento); display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.decisiones b { display: block; }
+.decisiones p { margin: 2px 0 0; color: var(--suave); font-size: 14.5px; }
+.caja { border: 1px solid var(--borde); border-radius: 16px; padding: 20px; background: var(--fondo); }
+.caja p { color: var(--suave); font-size: 15px; margin: 0 0 10px; }
+
+/* otros proyectos */
+.proyectos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.proyecto { background: var(--superficie); border: 1px solid var(--borde); border-radius: 20px; padding: 24px; box-shadow: var(--sombra); display: flex; flex-direction: column; }
+.proyecto .meta { font-size: 13px; color: var(--suave); font-weight: 600; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px; }
+.proyecto p { color: var(--suave); font-size: 15px; margin: 0 0 12px; }
+.proyecto .imagenes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin: 6px 0 14px; }
+.proyecto .imagenes img { border-radius: 10px; border: 1px solid var(--borde); height: 190px; width: 100%; object-fit: cover; object-position: top; background: #fff; cursor: zoom-in; }
+.proyecto .datos { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
+.proyecto .datos li { font-size: 13px; font-weight: 600; color: var(--acento); background: var(--acento-suave); padding: 3px 10px; border-radius: 8px; }
+.proyecto .pie { margin-top: auto; padding-top: 8px; display: flex; gap: 14px; font-size: 14.5px; font-weight: 600; }
+.en-desarrollo { font-size: 12px; font-weight: 700; color: var(--texto); background: transparent; border: 1px solid var(--suave); padding: 2px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
+.icono-grande { font-size: 30px; width: 54px; height: 54px; border-radius: 14px; background: var(--acento-suave); display: grid; place-items: center; margin-bottom: 12px; }
+
+/* formación y contacto */
+.formacion { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.formacion .caja b { display: block; }
+.contacto { text-align: center; padding: 72px 0 90px; }
+.contacto .botones { justify-content: center; }
+footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.5px; padding: 22px 0; }
+
+/* visor de imágenes */
+.visor { position: fixed; inset: 0; background: rgba(5,6,12,.86); display: none; place-items: center; z-index: 50; padding: 24px; cursor: zoom-out; }
+.visor.abierto { display: grid; }
+.visor img { max-width: 96vw; max-height: 92vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+
+@media (max-width: 860px) {
+  .cifras-proyecto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .funciones, .proyectos, .formacion, .dos-columnas, .galeria { grid-template-columns: minmax(0, 1fr); }
+  .portada-grid, .skills { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .skills { gap: 12px; margin-top: 36px; }
+  .barra nav { display: none; }
+  .idiomas { margin-left: auto; }
+  .destacado { padding: 22px; border-radius: 18px; }
+  .portada { padding-top: 56px; padding-bottom: 40px; }
+}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="envoltorio">
+    <a class="marca" href="#">Enriqueta Gersol</a>
+    <nav>
+      <a href="#job-agent"><span lang="es">Job Agent</span><span lang="en">Job Agent</span></a>
+      <a href="#proyectos"><span lang="es">Proyectos</span><span lang="en">Projects</span></a>
+      <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    </nav>
+    <div class="idiomas" role="group" aria-label="Idioma / Language">
+      <button type="button" data-idioma="es" aria-pressed="true">ES</button>
+      <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- PORTADA -->
+  <div class="envoltorio portada">
+    <div class="portada-grid">
+      <div>
+        <h1>Enriqueta Gersol</h1>
+        <p class="subtitulo-portada">
+          <span lang="es">Ingeniera de Telecomunicación en Madrid. Diseño y construyo productos con IA, cloud y APIs.</span>
+          <span lang="en">Telecommunications Engineer based in Madrid. I design and build products with AI, cloud and APIs.</span>
+        </p>
+        <p class="lema">
+          <span lang="es">Vengo de la consultoría estratégica y busco <b>más ownership</b> en una empresa de producto: un trabajo <b>hands-on</b> en el que vea el impacto de lo que hago y cómo aporta valor al cliente. En paralelo, me estoy formando por mi cuenta en IA y lo pongo en práctica con proyectos personales. El último es un agente de IA que lleva mi búsqueda de empleo de principio a fin: busca ofertas ajustadas a mi experiencia, según mi CV, y a mis preferencias, y cuanto más lo uso más aprende: de las que me interesan, de las que descarto y de las candidaturas en las que ya me han rechazado. Además adapta mi CV a cada oferta, sigue mis candidaturas y lee mi correo.</span>
+          <span lang="en">I come from strategy consulting and I'm looking for <b>more ownership</b> at a product company: a <b>hands-on</b> role where I can see the impact of my work and how it creates value for customers. Alongside it, I'm teaching myself AI and putting it into practice through personal projects. The latest is an AI agent that runs my job search end to end: it finds openings that match my experience, based on my CV, and my preferences, and the more I use it the more it learns: from the ones I like, the ones I reject and the applications where I've already been turned down. It also tailors my CV to each opening, tracks my applications and reads my email.</span>
+        </p>
+        <div class="botones">
+        <a class="boton primario" href="mailto:quecagersol@gmail.com" data-email="quecagersol@gmail.com"><span lang="es">Escríbeme</span><span lang="en">Email me</span></a>
+        <a class="boton" href="https://www.linkedin.com/in/enriqueta-gersol-00038b188" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="boton" href="https://github.com/enriquetagersol" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <figure class="portada-captura">
+        <a class="marco" href="#job-agent"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-dashboard.jpg" alt="Job Agent"></a>
+        <figcaption><a href="#job-agent"><span lang="es">Job Agent: cómo funciona ↓</span><span lang="en">Job Agent: how it works ↓</span></a></figcaption>
+      </figure>
+    </div>
+    <div class="skills">
+      <a class="skill" href="#job-agent"><b><span lang="es">Agentes de IA</span><span lang="en">AI agents</span></b><p><span lang="es">Que leen, puntúan, redactan y aprenden de mi feedback.</span><span lang="en">That read, score, write and learn from my feedback.</span></p><span class="prueba">Job Agent →</span></a>
+      <a class="skill" href="#tfm"><b><span lang="es">Cloud serverless</span><span lang="en">Serverless cloud</span></b><p><span lang="es">Un SaaS completo en AWS, con su modelo de costes.</span><span lang="en">A full SaaS on AWS, with its cost model.</span></p><span class="prueba"><span lang="es">29 Lambdas · 7 tablas →</span><span lang="en">29 Lambdas · 7 tables →</span></span></a>
+      <a class="skill" href="#job-agent"><b><span lang="es">Integraciones</span><span lang="en">Integrations</span></b><p><span lang="es">Gmail, Slack y las APIs de Ashby, Greenhouse y Lever.</span><span lang="en">Gmail, Slack and the Ashby, Greenhouse and Lever APIs.</span></p><span class="prueba"><span lang="es">145 empresas · 7 plataformas →</span><span lang="en">145 companies · 7 platforms →</span></span></a>
+      <a class="skill" href="#tfg"><b><span lang="es">Apps de principio a fin</span><span lang="en">End-to-end apps</span></b><p><span lang="es">Móvil, backend, base de datos y panel de gestión.</span><span lang="en">Mobile, backend, database and admin portal.</span></p><span class="prueba"><span lang="es">App con 3 roles →</span><span lang="en">3-role app →</span></span></a>
+    </div>
+  </div>
+
+  <!-- JOB AGENT -->
+  <section id="job-agent">
+    <div class="envoltorio">
+      <p class="titulo-seccion"><span lang="es">Proyecto destacado · 2026</span><span lang="en">Featured project · 2026</span></p>
+      <div class="destacado">
+        <div class="cabecera-destacado">
+          <div>
+            <h2>Job Agent</h2>
+            <p class="intro" style="margin-bottom:0"><span lang="es">Mi asistente personal de búsqueda de empleo con IA. Busca ofertas ajustadas a mi experiencia, según mi CV, y a mis preferencias, leyéndolas de verdad. Cuanto más lo uso, mejor acierta: aprende de las ofertas que me interesan y de las que descarto, y al ponderar las recomendaciones tiene en cuenta las candidaturas en las que ya me han rechazado. Crea un CV optimizado para cada una, sigue mis candidaturas, se entera de las novedades leyendo mi correo y puedo hablar con él por Slack desde el móvil.</span><span lang="en">My personal AI job-search assistant. It finds openings that match my experience, based on my CV, and my preferences, by actually reading them. The more I use it, the better it gets: it learns from the openings I like and the ones I reject, and it weighs its recommendations against the applications where I've already been turned down. It writes a tailored CV for each one, tracks my applications, picks up updates by reading my email, and I can talk to it on Slack from my phone.</span></p>
+          </div>
+          <div class="botones">
+            <a class="boton primario" href="https://github.com/enriquetagersol/job-agent" target="_blank" rel="noopener"><span lang="es">Código en GitHub</span><span lang="en">Code on GitHub</span></a>
+          </div>
+        </div>
+        <ul class="cifras-proyecto">
+          <li><b>145</b><span lang="es">empresas</span><span lang="en">companies</span></li><li><b>7</b><span lang="es">plataformas de reclutamiento</span><span lang="en">recruiting platforms</span></li><li><b>17</b><span lang="es">acciones por Slack</span><span lang="en">Slack actions</span></li><li><b><span lang="es">~5.100</span><span lang="en">~5,100</span></b><span lang="es">líneas en 15 módulos</span><span lang="en">lines in 15 modules</span></li>
+        </ul>
+
+        <div class="dos-columnas contexto">
+          <div class="caja">
+            <h3><span lang="es">El problema</span><span lang="en">The problem</span></h3>
+            <p><span lang="es">Buscar trabajo es repetitivo y es fácil perder cosas de vista:</span><span lang="en">Job hunting is repetitive and it is easy to lose track of things:</span></p>
+            <ul class="lista"><li><span lang="es">Ofertas que solo coinciden en el título.</span><span lang="en">Openings that only match on the job title.</span></li><li><span lang="es">CVs que hay que reescribir para cada puesto.</span><span lang="en">CVs that have to be rewritten for every role.</span></li><li><span lang="es">Correos de recruiters perdidos entre cientos de notificaciones.</span><span lang="en">Recruiter emails lost among hundreds of notifications.</span></li><li><span lang="es">Candidaturas a las que se te olvida hacer seguimiento.</span><span lang="en">Applications you forget to follow up on.</span></li></ul>
+          </div>
+          <div class="caja">
+            <h3><span lang="es">Mi papel</span><span lang="en">My role</span></h3>
+            <p><span lang="es">Lo diseñé yo y lo construí con Claude Code como copiloto. Yo definí el producto, los flujos, las reglas y los límites; Claude escribía y probaba el código; yo lo validaba usándolo en mi propia búsqueda de empleo.</span><span lang="en">I designed it and built it with Claude Code as a copilot. I defined the product, the flows, the rules and the limits; Claude wrote and tested the code; I validated it by using it in my own job search.</span></p>
+          </div>
+        </div>
+
+        <div class="marco principal" data-zoom="img/ja-dashboard.jpg">
+          <div class="puntos"><i></i><i></i><i></i></div>
+          <img src="img/ja-dashboard.jpg" alt="Dashboard de candidaturas de Job Agent">
+        </div>
+        <p class="nota-demo"><span lang="es">Capturas con datos ficticios: persona, empresas y ofertas inventadas.</span><span lang="en">Screenshots use fictitious data: made-up person, companies and openings.</span></p>
+
+        <h3 class="subtitulo"><span lang="es">Funcionalidades</span><span lang="en">Features</span></h3>
+        <div class="funciones">
+          <div class="funcion"><div class="icono">🧑‍💼</div><b><span lang="es">Entiende mi perfil</span><span lang="en">Understands my profile</span></b><ul><li><span lang="es">Subo mi CV y genera mi perfil profesional y un CV maestro con todo lo que es verdad.</span><span lang="en">I upload my CV and it builds my professional profile and a master CV with everything that is true.</span></li><li><span lang="es">Puedo añadir proyectos, logros o herramientas: me enseña la propuesta y solo la guarda si digo que sí.</span><span lang="en">I can add projects, achievements or tools: it shows me the proposal and only saves it if I say yes.</span></li><li><span lang="es">Escribo mis preferencias con mis palabras («nada de consultoras ni de vender con cuota») y las traduce a categorías.</span><span lang="en">I write my preferences in my own words ("no consultancies, no sales quotas") and it turns them into categories.</span></li></ul></div>
+          <div class="funcion"><div class="icono">🔍</div><b><span lang="es">Busca y evalúa ofertas</span><span lang="en">Finds and evaluates openings</span></b><ul><li><span lang="es">Busca en las webs de empleo de 145 empresas, a través de 7 plataformas de reclutamiento (Ashby, Greenhouse, Lever…).</span><span lang="en">Searches the careers pages of 145 companies across 7 recruiting platforms (Ashby, Greenhouse, Lever…).</span></li><li><span lang="es">Lee cada oferta completa y me dice qué haría, por qué encaja y por qué no, cómo es la empresa y un encaje de 0 a 100.</span><span lang="en">Reads each full posting and tells me what I would do, why it fits and why not, what the company is like, and a 0–100 fit score.</span></li><li><span lang="es">Aplica mis filtros, reconoce ubicaciones en español y en inglés y convierte los salarios a euros.</span><span lang="en">Applies my hard filters, understands locations in Spanish and English, and converts salaries to euros.</span></li></ul></div>
+          <div class="funcion"><div class="icono">🧠</div><b><span lang="es">Aprende de mí</span><span lang="en">Learns from me</span></b><ul><li><span lang="es">Cada 👍/👎 a una oferta, con su motivo, ajusta mis «señales aprendidas»: lo que me interesa y lo que descarto.</span><span lang="en">Every 👍/👎 on an opening, with its reason, updates my "learned signals": what I like and what I reject.</span></li><li><span lang="es">Al ponderar las recomendaciones también tiene en cuenta las candidaturas en las que ya me han rechazado.</span><span lang="en">When weighing recommendations it also considers the applications where I've already been turned down.</span></li><li><span lang="es">Las búsquedas siguientes ya las tienen en cuenta, así que cuanto más lo uso, mejor acierta.</span><span lang="en">The next searches already take them into account, so the more I use it, the better it gets.</span></li></ul></div>
+          <div class="funcion"><div class="icono">📄</div><b><span lang="es">CV optimizado y CV general</span><span lang="en">Tailored CV and general CV</span></b><ul><li><span lang="es">Un CV de una página para cada oferta, sin inventar nada.</span><span lang="en">A one-page CV for each opening, without making anything up.</span></li><li><span lang="es">Vista previa con notas: qué valoran, una tabla ✅/⚠️/❌, qué ha cambiado y qué huecos preparar para la entrevista.</span><span lang="en">Preview with notes: what they value, a ✅/⚠️/❌ table, what changed and which gaps to prepare for the interview.</span></li><li><span lang="es">Me avisa si aparece una cifra que no está en mi CV. También hace un CV general en inglés o en español.</span><span lang="en">It warns me if a figure appears that is not in my CV. It also makes a general CV in English or Spanish.</span></li></ul></div>
+          <div class="funcion"><div class="icono">📊</div><b><span lang="es">Seguimiento de candidaturas</span><span lang="en">Application tracking</span></b><ul><li><span lang="es">Dashboard con «Para hoy», cifras, candidaturas por etapa y el próximo paso sugerido por la IA.</span><span lang="en">Dashboard with "Today", key numbers, applications by stage and the AI-suggested next step.</span></li><li><span lang="es">Ordeno por prioridad arrastrando.</span><span lang="en">I set priorities by drag and drop.</span></li><li><span lang="es">Flujo de un clic: CV optimizado → Aplicada → seguimiento.</span><span lang="en">One-click flow: tailored CV → Applied → follow-up.</span></li></ul></div>
+          <div class="funcion"><div class="icono">📬</div><b><span lang="es">Lee mi Gmail</span><span lang="en">Reads my Gmail</span></b><ul><li><span lang="es">Vigila la bandeja cada 2 minutos y se pone al día al encender el ordenador.</span><span lang="en">Checks the inbox every 2 minutes and catches up when I turn on my computer.</span></li><li><span lang="es">Detecta entrevistas, rechazos, ofertas y plazos; actualiza la candidatura con la fecha del correo y me avisa.</span><span lang="en">Detects interviews, rejections, offers and deadlines; updates the application with the email date and notifies me.</span></li><li><span lang="es">De las alertas de empleo saca los puestos, los investiga y solo me avisa de los que encajan.</span><span lang="en">Extracts roles from job alerts, researches them and only tells me about the ones that fit.</span></li></ul></div>
+          <div class="funcion"><div class="icono">💬</div><b><span lang="es">Chat por Slack</span><span lang="en">Slack chat</span></b><ul><li><span lang="es">Le escribo desde el móvil: «me han rechazado en X», «investiga esta oferta», «añade este proyecto a mi CV»…</span><span lang="en">I message it from my phone: "I got rejected at X", "research this opening", "add this project to my CV"…</span></li><li><span lang="es">Puede hacer 17 acciones distintas sobre mis datos.</span><span lang="en">It can perform 17 different actions on my data.</span></li><li><span lang="es">Recuerda la conversación, pregunta si algo es ambiguo y respeta los cambios que hago en la app.</span><span lang="en">It remembers the conversation, asks when something is ambiguous and respects the changes I make in the app.</span></li></ul></div>
+        </div>
+
+        <div class="galeria">
+          <figure><div class="marco" data-zoom="img/ja-ofertas.jpg"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-ofertas.jpg" alt="Ofertas recomendadas"></div>
+            <figcaption><span lang="es">Ofertas recomendadas con su encaje y su análisis</span><span lang="en">Recommended openings with fit score and analysis</span></figcaption></figure>
+          <figure><div class="marco" data-zoom="img/ja-cv.jpg"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-cv.jpg" alt="CV optimizado con notas"></div>
+            <figcaption><span lang="es">CV optimizado, con lo que ha cambiado y lo que hay que revisar al lado</span><span lang="en">Tailored CV, with what changed and what to review alongside</span></figcaption></figure>
+          <figure><div class="marco" data-zoom="img/ja-detalle.jpg"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-detalle.jpg" alt="Detalle de una candidatura"></div>
+            <figcaption><span lang="es">Detalle de una candidatura: novedad, próximo paso sugerido e historial</span><span lang="en">Application detail: latest update, suggested next step and history</span></figcaption></figure>
+          <figure><div class="marco" data-zoom="img/ja-te-interesa.jpg"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-te-interesa.jpg" alt="Ofertas que me interesan"></div>
+            <figcaption><span lang="es">«Te interesa»: CV optimizado, aplicada o descartar, en un clic</span><span lang="en">"Interested": tailored CV, applied or dismiss, in one click</span></figcaption></figure>
+        </div>
+
+        <div class="dos-columnas">
+          <div>
+            <h3><span lang="es">Decisiones de producto</span><span lang="en">Product decisions</span></h3>
+            <ul class="decisiones">
+              <li><span class="n">1</span><div><b><span lang="es">La persona decide</span><span lang="en">The human decides</span></b><p><span lang="es">Nada importante se guarda sin un sí.</span><span lang="en">Nothing important is saved without a yes.</span></p></div></li>
+              <li><span class="n">2</span><div><b><span lang="es">Sin inventar</span><span lang="en">No making things up</span></b><p><span lang="es">Datos solo si están en el CV, la oferta o el correo; si falta algo, pregunta.</span><span lang="en">Facts only if they're in the CV, the posting or the email; if something is missing, it asks.</span></p></div></li>
+              <li><span class="n">3</span><div><b><span lang="es">Coste bajo control</span><span lang="en">Cost under control</span></b><p><span lang="es">Primero filtros gratis, luego una criba barata por título (~0,0005 $ por puesto) y la investigación a fondo en tandas de 10.</span><span lang="en">Free filters first, then a cheap title screening (~$0.0005 per role) and in-depth research in batches of 10.</span></p></div></li>
+              <li><span class="n">4</span><div><b><span lang="es">Privacidad</span><span lang="en">Privacy</span></b><p><span lang="es">Funciona en mi ordenador y mis claves nunca se suben a ningún sitio. En Gmail solo lee y etiqueta.</span><span lang="en">Runs on my computer and my keys are never uploaded anywhere. In Gmail it only reads and labels.</span></p></div></li>
+              <li><span class="n">5</span><div><b><span lang="es">Interfaz sencilla</span><span lang="en">Simple interface</span></b><p><span lang="es">Botones claros, avisos que aparecen un momento y todo en español.</span><span lang="en">Clear buttons, short-lived notifications and everything in Spanish.</span></p></div></li>
+            </ul>
+          </div>
+          <div>
+            <div class="caja">
+              <h3><span lang="es">Cómo está hecho</span><span lang="en">How it is built</span></h3>
+              <dl class="ficha">
+                <dt><span lang="es">Lenguajes</span><span lang="en">Languages</span></dt><dd>Python · HTML/CSS/JS</dd>
+                <dt><span lang="es">IA</span><span lang="en">AI</span></dt><dd><span lang="es">API de Claude y Claude Code</span><span lang="en">Claude API and Claude Code</span></dd>
+                <dt><span lang="es">Integraciones</span><span lang="en">Integrations</span></dt><dd><span lang="es">Gmail API (OAuth) y Slack API (Socket Mode, sin servidor público)</span><span lang="en">Gmail API (OAuth) and Slack API (Socket Mode, no public server)</span></dd>
+                <dt><span lang="es">Tamaño</span><span lang="en">Size</span></dt><dd><span lang="es">~5.100 líneas de código en 15 módulos</span><span lang="en">~5,100 lines of code in 15 modules</span></dd>
+              </dl>
+            </div>
+            <div class="caja aprendi">
+              <h3><span lang="es">Lo que aprendí</span><span lang="en">What I learned</span></h3>
+              <p><span lang="es">Diseñar agentes de IA útiles va de poner límites claros, medir el coste de cada paso y dejar el control a la persona.</span><span lang="en">Building useful AI agents is about setting clear limits, measuring the cost of every step and leaving the person in control.</span></p>
+              <p><span lang="es">También va de probarlos en uso real: cada fallo que encontré usándolo se convirtió en una regla del producto. Por ejemplo, una ubicación en español que no reconocía, o un bot que deshacía cambios hechos en la app.</span><span lang="en">It is also about testing them in real use: every bug I found while using it became a product rule. For example, a Spanish location it did not recognise, or a bot that undid changes made in the app.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTROS PROYECTOS -->
+  <section id="proyectos">
+    <div class="envoltorio">
+      <p class="titulo-seccion"><span lang="es">Más proyectos</span><span lang="en">More projects</span></p>
+      <h2><span lang="es">Producto, cloud e IA</span><span lang="en">Product, cloud and AI</span></h2>
+      <div class="proyectos">
+
+        <article class="proyecto" id="tfm">
+          <div class="meta"><span lang="es">Trabajo Fin de Máster · 2024</span><span lang="en">Master's Thesis · 2024</span></div>
+          <h3><span lang="es">SaaS de administración de fincas</span><span lang="en">Property management SaaS</span></h3>
+          <div class="imagenes">
+            <img src="img/tfm-arquitectura.png" alt="Arquitectura serverless en AWS" data-zoom="img/tfm-arquitectura.png">
+            <img src="img/tfm-admin.jpg" alt="Panel del administrador" data-zoom="img/tfm-admin.jpg">
+          </div>
+          <p><span lang="es">Plataforma web para digitalizar la gestión de comunidades de vecinos, un sector muy poco digitalizado. La diseñé y desarrollé de principio a fin, con tres roles: superadministrador, administrador y vecinos. Incluye propiedades, documentos, encuestas, eventos y comunicaciones por email. Aprendí AWS desde cero para el proyecto y lo construí en iteraciones hasta un MVP.</span><span lang="en">Web platform to digitize residential property management, a barely digitized sector. I designed and built it end to end, with three roles: super-admin, administrator and residents. It covers properties, documents, surveys, events and email communications. I learned AWS from scratch for it and built it iteratively up to an MVP.</span></p>
+          <ul class="datos">
+            <li><span lang="es">Arquitectura serverless</span><span lang="en">Serverless architecture</span></li><li><span lang="es">29 funciones Lambda</span><span lang="en">29 Lambda functions</span></li><li><span lang="es">7 tablas DynamoDB</span><span lang="en">7 DynamoDB tables</span></li><li><span lang="es">Modelo de costes: 5.000 y 100.000 usuarios</span><span lang="en">Cost model: 5,000 and 100,000 users</span></li>
+          </ul>
+          <ul class="chips"><li>AWS Lambda</li><li>API Gateway</li><li>Cognito</li><li>DynamoDB</li><li>S3</li><li>SES</li><li>JavaScript · jQuery · Bootstrap</li></ul>
+          <div class="pie"><a href="https://github.com/enriquetagersol/tfm-app-icai" target="_blank" rel="noopener"><span lang="es">Ver el código →</span><span lang="en">View the code →</span></a></div>
+        </article>
+
+        <article class="proyecto" id="tfg">
+          <div class="meta"><span lang="es">Trabajo Fin de Grado (Teleco) · 2021</span><span lang="en">Engineering Bachelor's Thesis · 2021</span></div>
+          <h3><span lang="es">App Android «Hablando con un sacerdote»</span><span lang="en">Android app "Hablando con un sacerdote"</span></h3>
+          <div class="imagenes">
+            <img src="img/tfg-login.png" alt="Pantalla de acceso de la app" data-zoom="img/tfg-login.png" style="object-fit:contain;background:var(--superficie2)">
+            <img src="img/tfg-gestor.jpg" alt="Portal del gestor" data-zoom="img/tfg-gestor.jpg" style="object-fit:contain;background:var(--superficie2)">
+          </div>
+          <p><span lang="es">Red de contacto que conecta a personas con sacerdotes para hablar de temas de fe. Diseñé la arquitectura del producto, los flujos de usuario y un portal web para el gestor. El gestor verifica la identidad de cada sacerdote antes de darle de alta, modera las denuncias y consulta estadísticas de uso. Aprendí PHP por mi cuenta para construir el backend.</span><span lang="en">A contact network connecting people with priests to talk about faith. I designed the product architecture, the user journeys and a web portal for the administrator, who verifies each priest's identity before approving them, moderates reports and reviews usage stats. I taught myself PHP to build the backend.</span></p>
+          <ul class="datos">
+            <li><span lang="es">3 roles</span><span lang="en">3 roles</span></li><li><span lang="es">Verificación de identidad</span><span lang="en">Identity verification</span></li><li><span lang="es">Valoraciones y denuncias</span><span lang="en">Ratings and reports</span></li><li><span lang="es">Avisos por email</span><span lang="en">Email notifications</span></li>
+          </ul>
+          <ul class="chips"><li>Apache Cordova</li><li>HTML · CSS · JS</li><li>Bootstrap</li><li>AJAX · JSON</li><li>PHP · MySQL</li><li>Android Studio</li></ul>
+        </article>
+
+        <article class="proyecto">
+          <div class="icono-grande">🤖</div>
+          <div class="meta"><span lang="es">Proyecto personal</span><span lang="en">Personal project</span><span class="en-desarrollo"><span lang="es">En desarrollo</span><span lang="en">In progress</span></span></div>
+          <h3><span lang="es">Sistema multiagente para go-to-market</span><span lang="en">GTM multi-agent system</span></h3>
+          <p><span lang="es">Sistema modular de agentes de IA especializados para apoyar la estrategia de salida al mercado de productos tecnológicos. Incluye entender el producto, inteligencia de mercado, perfil de cliente ideal, posicionamiento frente a la competencia y priorización de oportunidades. Lo estoy prototipando.</span><span lang="en">A modular system of specialist AI agents to support go-to-market strategy for tech products. It covers understanding the product, market intelligence, ideal customer profile, competitive positioning and prioritizing opportunities. I'm prototyping it.</span></p>
+          <ul class="chips"><li><span lang="es">Agentes de IA</span><span lang="en">AI agents</span></li><li>Go-to-market</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMACIÓN -->
+  <section>
+    <div class="envoltorio">
+      <p class="titulo-seccion"><span lang="es">Formación</span><span lang="en">Education</span></p>
+      <div class="formacion">
+        <div class="caja"><b>Universidad Pontificia Comillas (ICAI–ICADE)</b><p><span lang="es">Máster en Ingeniería de Telecomunicación · Doble grado en Ingeniería de Telecomunicación y ADE · 2023</span><span lang="en">MEng Telecommunications Engineering · Dual degree in Telecommunications Engineering & Business Administration · 2023</span></p></div>
+        <div class="caja"><b>University of Technology Sydney</b><p><span lang="es">Intercambio en ADE · 2023</span><span lang="en">Business Administration exchange · 2023</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto">
+    <div class="envoltorio">
+      <h2><span lang="es">¿Hablamos?</span><span lang="en">Let's talk</span></h2>
+      <p class="intro" style="margin:0 auto 26px"><span lang="es">Busco más ownership en una empresa de producto: un trabajo hands-on en el que vea el impacto de lo que hago y cómo aporta valor al cliente. En Madrid o en remoto.</span><span lang="en">I'm looking for more ownership at a product company: a hands-on role where I can see the impact of my work and how it creates value for customers. Madrid or remote.</span></p>
+      <div class="botones">
+        <a class="boton primario" href="mailto:quecagersol@gmail.com" data-email="quecagersol@gmail.com">quecagersol@gmail.com</a>
+        <a class="boton" href="https://www.linkedin.com/in/enriqueta-gersol-00038b188" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="boton" href="https://github.com/enriquetagersol" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="envoltorio">© 2026 Enriqueta Gersol García-Aranda</div></footer>
+
+<div class="visor" id="visor" role="dialog" aria-label="Imagen ampliada"><img alt=""></div>
+
+<script>
+// Idioma: inglés por defecto; si la persona elige otro, se recuerda
+(function () {
+  const raiz = document.documentElement;
+  let idioma = "en";
+  try { idioma = localStorage.getItem("idioma") || "en"; } catch (e) {}
+  if (!["es", "en"].includes(idioma)) idioma = "en";
+  const poner = (i) => {
+    raiz.dataset.idioma = i; raiz.lang = i;
+    document.querySelectorAll(".idiomas button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.idioma === i)));
+    try { localStorage.setItem("idioma", i); } catch (e) {}
+  };
+  poner(idioma);
+  document.querySelectorAll(".idiomas button").forEach((b) => b.addEventListener("click", () => poner(b.dataset.idioma)));
+})();
+// Visor: pulsar una imagen la amplía
+(function () {
+  const visor = document.getElementById("visor"), img = visor.querySelector("img");
+  document.querySelectorAll("[data-zoom]").forEach((el) => el.addEventListener("click", () => {
+    img.src = el.dataset.zoom; img.alt = (el.querySelector("img") || el).alt || ""; visor.classList.add("abierto");
+  }));
+  visor.addEventListener("click", () => visor.classList.remove("abierto"));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") visor.classList.remove("abierto"); });
+})();
+// Email: además de abrir el correo, copia la dirección y lo avisa
+(function () {
+  const aviso = document.createElement("div"); aviso.className = "aviso"; aviso.setAttribute("role", "status"); document.body.appendChild(aviso);
+  let t;
+  document.querySelectorAll("[data-email]").forEach((a) => a.addEventListener("click", () => {
+    const email = a.dataset.email, en = document.documentElement.dataset.idioma === "en";
+    const mostrar = (txt) => { aviso.textContent = txt; aviso.classList.add("visible"); clearTimeout(t); t = setTimeout(() => aviso.classList.remove("visible"), 2600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(email).then(() => mostrar((en ? "Copied: " : "Copiado: ") + email), () => mostrar(email));
+    else mostrar(email);
+  }));
+})();
+// Enlaces internos: desplazamiento suave también donde el navegador no salta solo
+document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+  const id = a.getAttribute("href").slice(1), destino = id ? document.getElementById(id) : document.body;
+  if (!destino) return;
+  e.preventDefault(); destino.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (id) history.replaceState(null, "", "#" + id);
+}));
+</script>
+</body>
+</html>
