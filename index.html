@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enriqueta Gersol · Portfolio</title>
-<meta name="description" content="Enriqueta Gersol, Telecommunications Engineer based in Madrid. I design and build products with AI, cloud and APIs.">
+<meta name="description" content="Enriqueta Gersol, Telecommunications Engineer based in Madrid. I design and build products with AI, cloud and APIs: an AI job-search agent and a voice language tutor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,7 +48,9 @@ img { max-width: 100%; display: block; }
 .portada-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; }
 .portada .portada-grid h1 { font-size: clamp(34px, 4.4vw, 52px); }
 .portada p.lema b { color: var(--texto); font-weight: 600; }
+.portada-proyectos { display: grid; gap: 18px; }
 .portada-captura { margin: 0; }
+.portada-captura .marco img { height: 230px; width: 100%; object-fit: cover; object-position: top; }
 .portada-captura .marco { display: block; transition: transform .15s, box-shadow .15s; }
 .portada-captura .marco:hover { transform: translateY(-2px); border-color: #555; }
 .portada-captura figcaption { margin-top: 10px; font-size: 14px; font-weight: 600; }
@@ -181,8 +183,7 @@ footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.
           <span lang="en">Telecommunications Engineer based in Madrid. I design and build products with AI, cloud and APIs.</span>
         </p>
         <p class="lema">
-          <span lang="es">Vengo de la consultoría estratégica. Me motiva tener <b>ownership</b>, trabajar <b>hands-on</b> y ver el impacto de lo que construyo y cómo aporta valor al cliente. En paralelo, me estoy formando por mi cuenta en IA y lo pongo en práctica con proyectos personales. El último es un agente de IA que gestiona la búsqueda de empleo de principio a fin: busca ofertas ajustadas a mi experiencia, según mi CV, y a mis preferencias, y cuanto más lo uso más aprende: de las que me interesan, de las que descarto y de las candidaturas en las que ya me han rechazado. Además adapta mi CV a cada oferta, sigue mis candidaturas y lee mi correo.</span>
-          <span lang="en">I come from strategy consulting. I'm driven by <b>ownership</b>, <b>hands-on</b> work and seeing the impact of what I build and how it creates value for customers. Alongside it, I'm teaching myself AI and putting it into practice through personal projects. The latest is an AI agent that runs a job search end to end: it finds openings that match my experience, based on my CV, and my preferences, and the more I use it the more it learns: from the ones I like, the ones I reject and the applications where I've already been turned down. It also tailors my CV to each opening, tracks my applications and reads my email.</span>
+          <span lang="es">Vengo de la consultoría estratégica. Me motiva tener <b>ownership</b>, trabajar <b>hands-on</b> y ver el impacto de lo que construyo y cómo aporta valor al cliente. En paralelo, me formo por mi cuenta en IA y lo pongo en práctica con proyectos personales: <b>Job Agent</b>, un agente que gestiona la búsqueda de empleo de principio a fin y aprende de cada decisión, y un <b>tutor de idiomas por voz</b> con el que hablas como en una clase particular, que te corrige mientras hablas y te prepara ejercicios a partir de tus errores.</span><span lang="en">I come from strategy consulting. I'm driven by <b>ownership</b>, <b>hands-on</b> work and seeing the impact of what I build and how it creates value for customers. Alongside it, I'm teaching myself AI and putting it into practice through personal projects: <b>Job Agent</b>, an agent that runs a job search end to end and learns from every decision, and a <b>voice language tutor</b> you talk to like a private teacher, which corrects you as you speak and builds exercises from your mistakes.</span>
         </p>
         <div class="botones">
         <a class="boton primario" href="mailto:quecagersol@gmail.com" data-email="quecagersol@gmail.com"><span lang="es">Escríbeme</span><span lang="en">Email me</span></a>
@@ -190,15 +191,21 @@ footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.
         <a class="boton" href="https://github.com/enriquetagersol" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
-      <figure class="portada-captura">
-        <a class="marco" href="#job-agent"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-dashboard.jpg" alt="Job Agent"></a>
-        <figcaption><a href="#job-agent"><span lang="es">Job Agent: cómo funciona ↓</span><span lang="en">Job Agent: how it works ↓</span></a></figcaption>
-      </figure>
+      <div class="portada-proyectos">
+        <figure class="portada-captura">
+          <a class="marco" href="#job-agent"><div class="puntos"><i></i><i></i><i></i></div><img src="img/ja-dashboard.jpg" alt="Job Agent"></a>
+          <figcaption><a href="#job-agent"><span lang="es">Job Agent: cómo funciona ↓</span><span lang="en">Job Agent: how it works ↓</span></a></figcaption>
+        </figure>
+        <figure class="portada-captura">
+          <a class="marco" href="#tutor"><div class="puntos"><i></i><i></i><i></i></div><img src="img/tutor-curso.jpg" alt="Tutor de idiomas"></a>
+          <figcaption><a href="#tutor"><span lang="es">Tutor de idiomas por voz <span class="en-desarrollo">WIP</span> ↓</span><span lang="en">Voice language tutor <span class="en-desarrollo">WIP</span> ↓</span></a></figcaption>
+        </figure>
+      </div>
     </div>
     <div class="skills">
       <a class="skill" href="#job-agent"><b><span lang="es">Agentes de IA</span><span lang="en">AI agents</span></b><p><span lang="es">Que leen, puntúan, redactan y aprenden de mi feedback.</span><span lang="en">That read, score, write and learn from my feedback.</span></p><span class="prueba">Job Agent →</span></a>
       <a class="skill" href="#tfm"><b><span lang="es">Cloud serverless</span><span lang="en">Serverless cloud</span></b><p><span lang="es">Un SaaS completo en AWS, con su modelo de costes.</span><span lang="en">A full SaaS on AWS, with its cost model.</span></p><span class="prueba"><span lang="es">29 Lambdas · 7 tablas →</span><span lang="en">29 Lambdas · 7 tables →</span></span></a>
-      <a class="skill" href="#job-agent"><b><span lang="es">Integraciones</span><span lang="en">Integrations</span></b><p><span lang="es">Gmail, Slack y las APIs de Ashby, Greenhouse y Lever.</span><span lang="en">Gmail, Slack and the Ashby, Greenhouse and Lever APIs.</span></p><span class="prueba"><span lang="es">145 empresas · 7 plataformas →</span><span lang="en">145 companies · 7 platforms →</span></span></a>
+      <a class="skill" href="#tutor"><b><span lang="es">IA por voz</span><span lang="en">Voice AI</span></b><p><span lang="es">Clases habladas en tiempo real que corrigen mientras hablas.</span><span lang="en">Real-time spoken lessons that correct you as you speak.</span></p><span class="prueba"><span lang="es">Tutor de idiomas →</span><span lang="en">Language tutor →</span></span></a>
       <a class="skill" href="#tfg"><b><span lang="es">Apps de principio a fin</span><span lang="en">End-to-end apps</span></b><p><span lang="es">Móvil, backend, base de datos y panel de gestión.</span><span lang="en">Mobile, backend, database and admin portal.</span></p><span class="prueba"><span lang="es">App con 3 roles →</span><span lang="en">3-role app →</span></span></a>
     </div>
   </div>
@@ -323,7 +330,7 @@ footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.
 
         <h3 class="subtitulo"><span lang="es">Funcionalidades</span><span lang="en">Features</span></h3>
         <div class="funciones">
-          <div class="funcion"><div class="icono">🎙️</div><b><span lang="es">Clases por voz</span><span lang="en">Voice lessons</span></b><ul><li><span lang="es">Hablas con un profesor nativo: 14 profesores en 5 idiomas (francés, inglés, italiano, alemán y portugués), con variantes como inglés británico o americano.</span><span lang="en">You talk to a native teacher: 14 teachers across 5 languages (French, English, Italian, German and Portuguese), with variants such as British or American English.</span></li><li><span lang="es">Te corrige sobre la marcha y se acuerda de la última charla.</span><span lang="en">It corrects you as you go and remembers your last conversation.</span></li></ul></div>
+          <div class="funcion"><div class="icono">🎙️</div><b><span lang="es">Clases por voz</span><span lang="en">Voice lessons</span></b><ul><li><span lang="es">Hablas con un profesor nativo: 14 profesores en 5 idiomas (francés, inglés, italiano, alemán y portugués), con variantes como inglés británico o americano.</span><span lang="en">You talk to a native teacher: 14 teachers across 5 languages (French, English, Italian, German and Portuguese), with variants such as British or American English.</span></li><li><span lang="es">Te corrige sobre la marcha y se acuerda de la última charla. Las clases duran como mucho 15 minutos (30 al día): cuando se acaba el tiempo, el profesor cierra la charla con naturalidad.</span><span lang="en">It corrects you as you go and remembers your last conversation. Lessons last up to 15 minutes (30 a day): when time runs out, the teacher wraps up naturally.</span></li></ul></div>
           <div class="funcion"><div class="icono">🧭</div><b><span lang="es">Prueba de nivel</span><span lang="en">Placement test</span></b><ul><li><span lang="es">Gramática, listening y speaking para fijar el nivel inicial, que luego se ajusta clase a clase.</span><span lang="en">Grammar, listening and speaking to set your starting level, which is then adjusted lesson by lesson.</span></li></ul></div>
           <div class="funcion"><div class="icono">🧠</div><b><span lang="es">Aprende de tus errores</span><span lang="en">Learns from your mistakes</span></b><ul><li><span lang="es">Al colgar, Claude repasa la conversación, actualiza tu ficha (errores, vocabulario, nivel) y te da un informe.</span><span lang="en">When you hang up, Claude reviews the conversation, updates your profile (mistakes, vocabulary, level) and gives you a report.</span></li><li><span lang="es">Ejercicios y fichas de teoría adaptados a tus errores; un error se da por superado cuando lo aciertas varias veces.</span><span lang="en">Exercises and grammar notes tailored to your mistakes; a mistake counts as overcome once you get it right several times.</span></li></ul></div>
           <div class="funcion"><div class="icono">🎧</div><b><span lang="es">Listening, reading y writing</span><span lang="en">Listening, reading and writing</span></b><ul><li><span lang="es">Audios y textos adaptados a tu nivel y a tus intereses, con preguntas.</span><span lang="en">Audio and texts adapted to your level and interests, with questions.</span></li><li><span lang="es">Los writings se corrigen con los criterios de Cambridge: nota, comentarios y versión corregida.</span><span lang="en">Writings are marked with Cambridge criteria: score, comments and a corrected version.</span></li></ul></div>
@@ -338,6 +345,11 @@ footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.
             <figcaption><span lang="es">Clase de conversación: el profesor recuerda la última charla</span><span lang="en">Conversation lesson: the teacher remembers your last chat</span></figcaption></figure>
         </div>
 
+        <h3 class="subtitulo"><span lang="es">Decisiones de producto</span><span lang="en">Product decisions</span></h3>
+        <ul class="decisiones" style="margin-bottom:24px">
+              <li><span class="n">1</span><div><b><span lang="es">Coste bajo control</span><span lang="en">Cost under control</span></b><p><span lang="es">Límite de minutos por clase y por persona y día, y el modelo justo para cada tarea: el gasto de voz y de IA no se dispara.</span><span lang="en">Minute limits per lesson and per person per day, and the right model for each task, so voice and AI costs stay in check.</span></p></div></li>
+              <li><span class="n">2</span><div><b><span lang="es">Solo por invitación</span><span lang="en">Invite-only</span></b><p><span lang="es">Se entra con Google o con un enlace por email, hay un tope de personas y cada una solo ve sus propios cursos.</span><span lang="en">Sign in with Google or an email link, with a cap on users, and each person only sees their own courses.</span></p></div></li>
+        </ul>
         <div class="dos-columnas">
           <div class="caja">
             <h3><span lang="es">Mi papel</span><span lang="en">My role</span></h3>
@@ -347,9 +359,9 @@ footer { border-top: 1px solid var(--borde); color: var(--suave); font-size: 13.
             <h3><span lang="es">Cómo está hecho</span><span lang="en">How it is built</span></h3>
             <dl class="ficha">
               <dt><span lang="es">Voz</span><span lang="en">Voice</span></dt><dd><span lang="es">LiveKit Agents: voz en tiempo real, reconocimiento y síntesis de voz y detección de turnos</span><span lang="en">LiveKit Agents: real-time voice, speech recognition and synthesis, and turn detection</span></dd>
-              <dt><span lang="es">IA</span><span lang="en">AI</span></dt><dd><span lang="es">Claude para conversar, corregir y generar ejercicios, textos y exámenes con salidas estructuradas</span><span lang="en">Claude to talk, correct and generate exercises, texts and exams with structured outputs</span></dd>
+              <dt><span lang="es">IA</span><span lang="en">AI</span></dt><dd><span lang="es">Claude para conversar, corregir y generar ejercicios, textos y exámenes con salidas estructuradas; Haiku para lo que se genera en volumen y Sonnet para lo que pide más finura</span><span lang="en">Claude to talk, correct and generate exercises, texts and exams with structured outputs; Haiku for high-volume generation and Sonnet where more nuance is needed</span></dd>
               <dt><span lang="es">App</span><span lang="en">App</span></dt><dd>Python · FastAPI · Next.js · React</dd>
-              <dt><span lang="es">Despliegue</span><span lang="en">Deployment</span></dt><dd><span lang="es">En preparación: Supabase (cuentas por invitación y datos), Railway, Vercel y LiveKit Cloud</span><span lang="en">In progress: Supabase (invite-only accounts and data), Railway, Vercel and LiveKit Cloud</span></dd>
+              <dt><span lang="es">Despliegue</span><span lang="en">Deployment</span></dt><dd><span lang="es">Preparado para la nube: Vercel (web), Railway (API), LiveKit Cloud (profesor) y Supabase (cuentas y datos)</span><span lang="en">Cloud-ready: Vercel (web), Railway (API), LiveKit Cloud (teacher) and Supabase (accounts and data)</span></dd>
               <dt><span lang="es">Código</span><span lang="en">Code</span></dt><dd><span lang="es">Privado</span><span lang="en">Private</span></dd>
             </dl>
           </div>
